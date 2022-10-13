@@ -1,7 +1,7 @@
 from configparser import LegacyInterpolation
-from msilib import MSIDBOPEN_DIRECT
-from tkinter import HORIZONTAL
-from turtle import left, right
+#from msilib import MSIDBOPEN_DIRECT
+#from tkinter import HORIZONTAL
+#from turtle import left, right
 import streamlit as st
 import pandas as pd
 import plotly.express as px
