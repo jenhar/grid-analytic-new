@@ -141,7 +141,7 @@ class analystTeams:
 
                 else:
                     if options == 'No at all':
-                        mask=travel_np >mins
+                        mask=(travel_np >0) & (travel_np <=mins)
 
                         travel_mask=np.where(mask, travel_np, np.NaN)
                         supply_mask=np.where(mask, supply_count, np.NaN)
@@ -151,21 +151,22 @@ class analystTeams:
 
                         demand_df[supply_value]=variabel
 
-                        value_sum_supply=travel_mask.astype(int)
-                        #print(max(value_sum_supply))
-                        #print(min(value_sum_supply))
-                        var_no=value_sum_supply>0
-                        thress=var_no.astype(int)
+                        value_min=np.nanmin(travel_mask, axis=1)
+
+                        v2=value_min > 0
+                        v3=v2.astype(int)
+                        thress=np.where(v3>0, np.NaN, 1)
+
                         demand_df[supply_value+'_'+'No at all']=thress
 
                         scaler=MinMaxScaler()
                         data1=[supply_value+'_'+'No at all']
                         data2=[''.join(data1+['_norm'])]
                         demand_df[data2] = scaler.fit_transform(demand_df[data1])
-                        demand_df[supply_value+'_score']=demand_df[''.join(data1+['_norm'])]*score
+                        demand_df[supply_value+'_score']=demand_df[supply_value+'_'+'No at all']*score
 
                     else:
-                        mask=(travel_np >=mins) & (travel_np <=maxx)
+                        mask=(travel_np >mins) & (travel_np <=maxx)
 
                         travel_mask=np.where(mask, travel_np, np.NaN)
                         supply_mask=np.where(mask, supply_count, np.NaN)

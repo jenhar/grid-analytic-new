@@ -1,7 +1,7 @@
 from configparser import LegacyInterpolation
-from msilib import MSIDBOPEN_DIRECT
-from tkinter import HORIZONTAL
-from turtle import left, right
+#from msilib import MSIDBOPEN_DIRECT
+#from tkinter import HORIZONTAL
+#from turtle import left, right
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -59,7 +59,7 @@ if loc:
 st.sidebar.subheader("Inputs Parameter")
 
 if st.sidebar.checkbox("Show advanced options"):
-    par=st.sidebar.multiselect("Select Parameter", options=['household', 'u10', 'u15', 'u20', 'u25', 'u30', 'u35', 'u40', 'u45', 'u50', 'u55', 'u60', 'Landvalue', 'Minimarket', 'Railway Station', 'Senior High School', 'Demography'])
+    par=st.sidebar.multiselect("Select Parameter", options=['household', 'u10', 'u15', 'u20', 'u25', 'u30', 'u35', 'u40', 'u45', 'u50', 'u55', 'u60', 'Landvalue', 'Minimarket', 'Railway Station', 'Senior High School'])
     var=[]
     skr=[]
     dsmin=[]
